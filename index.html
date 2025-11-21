@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한양대학교 건축공학과 학술제 2025</title>
+    <style>
+        /* --- 스타일(CSS) 디자인 영역 --- */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #111; /* 전체 배경색: 어두운 색 */
+            color: #fff; /* 글자색: 흰색 */
+            overflow-x: hidden;
+        }
+
+        /* 섹션 공통 스타일 */
+        section {
+            min-height: 100vh; /* 화면 꽉 차게 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* 메인 히어로 섹션 */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('cartman.jpg'); /* 임시 배경 이미지 */
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #ccc;
+        }
+
+        /* 소개 텍스트 스타일 */
+        .about-text {
+            max-width: 800px;
+            line-height: 1.8;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #ddd;
+        }
+
+        .about-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #4da6ff; /* 포인트 컬러 */
+        }
+
+        /* 포스터 이미지 스타일 */
+        .poster-img {
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-radius: 10px;
+        }
+
+        /* --- 스크롤 애니메이션 효과 (중요) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px); /* 아래에서 50px 내려가 있음 */
+            transition: all 1s ease; /* 1초 동안 부드럽게 변함 */
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0); /* 원래 위치로 올라옴 */
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero reveal">
+        <h1>HYU ARCHITECTURAL<br>ENGINEERING 2025</h1>
+        <p>한양대학교 건축공학과 학술제</p>
+        <p style="font-size: 1rem; margin-top: 20px;">SCROLL DOWN ↓</p>
+    </section>
+
+    <section>
+        <div class="reveal">
+            <h2 class="about-title">About Exhibition</h2>
+            <p class="about-text">
+                올해로 00회를 맞이하는 건축공학과 학술제는 학생들의 열정과<br>
+                건축 구조, 환경, 시공에 대한 깊이 있는 탐구를 선보이는 자리입니다.<br><br>
+                우리는 공간을 정의하고, 기술을 통해 더 나은 환경을 구축합니다.<br>
+                이번 학술제에서는 [여기에 학술제 주제 입력]을 주제로 다양한 프로젝트를 전시합니다.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <div class="reveal" style="text-align: center;">
+            <h2 class="about-title">Official Poster</h2>
+            <img src="cartman.jpg" class="poster-img" alt="학술제 포스터" width="500">
+        </div>
+    </section>
+
+    <section style="min-height: 30vh; background-color: #000;">
+        <div class="reveal">
+            <h3>Department of Architectural Engineering</h3>
+            <p>Hanyang University, Seoul, Korea</p>
+            <p>© 2025 HYU Architectural Engineering. All rights reserved.</p>
+        </div>
+    </section>
+
+    <script>
+        /* --- 스크롤 감지 자바스크립트 --- */
+        // 화면에 요소가 나타나는지 감시하는 '관찰자'를 만듭니다.
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 화면에 보이면 'active' 클래스를 추가해 위로 떠오르게 함
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1 // 요소가 10% 정도 보이면 작동
+        });
+
+        // 'reveal' 클래스를 가진 모든 요소를 찾아서 관찰을 시작합니다.
+        const revealElements = document.querySelectorAll('.reveal');
+        revealElements.forEach((el) => observer.observe(el));
+    </script>
+
+</body>
+</html>
