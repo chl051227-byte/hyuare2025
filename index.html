@@ -12,12 +12,12 @@
 
     <!-- 🧭 상단 내비게이션 바 -->
     <nav class="sidebar-nav">
-        <!-- 로고 이미지 -->
+        <!-- 로고 -->
         <a href="#" class="logo-link">
             <img src="img/logo.png" alt="HYU-ARE Logo" class="nav-logo-img">
         </a>
         
-        <!-- 메뉴 항목 -->
+        <!-- 메뉴 -->
         <div class="nav-menu">
             <a href="#yield">Yield Point</a>
             <a href="#layout">Layout</a>
@@ -42,7 +42,8 @@
             <h2 class="about-title">Yield Point</h2>
             <p class="about-text">
                 <strong>"항복점 : 새로운 시작"</strong><br><br>
-                재료가 하중을 견디다 못해 변형이 시작되는 순간,<br>
+                항복점에 도달한 우리는 더는 예전 상태로 <br>
+                돌아가지 못 하지만, 그 순간부터 각자만의 <br><strong>새로운 형태</strong>로 성장한다.<br><br>
                 우리는 그것을 Yield Point(항복점)라 부릅니다.<br><br>
                 이번 학술제는 한계에 도달한 끝이 아니라,<br>
                 새로운 형태로 나아가는 <strong>변화의 시작점</strong>을 이야기합니다.
@@ -51,31 +52,57 @@
     </section>
 
 
-    <!-- 🚩 포스터 섹션 (Yield와 Layout 사이) -->
+    <!-- 🚩 [추가됨] 포스터 섹션 -->
     <section id="poster">
         <div class="reveal" style="text-align: center;">
             <h2 class="about-title">Official Poster</h2>
-            <!-- 포스터 이미지 (cartman2.jpg) -->
-            <img src="img/cartman2.jpg" alt="Official Poster" class="poster-img">
+            <!-- 포스터 이미지 -->
+            <img src="img/2025Poster.jpg" alt="Official Poster" class="poster-img">
         </div>
     </section>
 
 
     <!-- 🚩 2. Layout (배치도) -->
     <section id="layout">
-        <div class="reveal" style="text-align: center;">
+        <div class="reveal" style="text-align: center; width: 100%;">
             <h2 class="about-title">Layout</h2>
-            <p class="about-text">졸업논문 및 학술전시 패널 배치도</p>
+            <p class="about-text" style="margin-bottom: 40px;">
+                졸업논문 및 학술전시 패널 배치도<br>
+                <span style="font-size: 0.9rem; color: #666;">(이름을 클릭하면 작품 제목을 확인할 수 있습니다)</span>
+            </p>
             
-            <!-- 배치도 이미지 영역 (나중에 실제 배치도 파일이 생기면 img 태그로 교체하세요) -->
-            <div style="width: 80%; max-width: 600px; height: 400px; background-color: #222; margin-top: 30px; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid #333;">
-                <span style="color: #666;">(Layout Image Coming Soon)</span>
+            <!-- 공간 마커가 포함된 맵 컨테이너 -->
+            <div class="layout-map-container">
+                
+                <!-- 1. 좌측 상단: 엘리베이터 (더 구석으로 이동 예정) -->
+                <div class="map-marker marker-ev">
+                    <img src="img/Elevator_white.png" alt="E/V" style="width: 50px; height: auto;">
+                    <span class="marker-label">E/V</span>
+                </div>
+
+                <!-- 배치도 그리드 -->
+                <div id="layout-grid" class="layout-container">
+                    <!-- JS가 내용을 채움 -->
+                </div>
+
+                <!-- 2. 중앙 하단: 포토월 (텍스트 추가됨) -->
+                <div class="map-marker marker-photowall">
+                    <div class="wall-line"></div>
+                    <span class="marker-label">PHOTO WALL</span> <!-- [수정] 글자 추가 -->
+                </div>
+
+                <!-- 3. 우측 하단: 계단 (더 구석으로 이동 예정) -->
+                <div class="map-marker marker-stair">
+                    <div class="stair-line"></div>
+                    <span class="marker-label">STAIR</span>
+                </div>
+
             </div>
         </div>
     </section>
 
 
-    <!-- 🚩 3. Event (이벤트) -->
+    <!-- 🚩 3. Event (이벤트) - [복구됨] -->
     <section id="event">
         <div class="reveal" style="text-align: center;">
             <h2 class="about-title">Event</h2>
@@ -94,38 +121,144 @@
 
     <!-- 🚩 4. About Us (준비위원회) -->
     <section id="about">
-        <div class="reveal">
+        <div class="reveal" style="text-align: center; width: 100%;">
             <h2 class="about-title">About Us</h2>
-            <p class="about-text">
-                <strong>2025 학술제 준비위원회</strong><br><br>
-                위원장: 홍길동<br>
-                디자인팀: 김한양, 이건축<br>
-                기획팀: 박공학, 최구조<br>
-                홍보팀: 정시공, 강환경
-            </p>
+            
+            <!-- 위원회 타이틀 -->
+            <div class="committee-box">
+                <h3 class="committee-main-title">2025 건축공학부 학술전시준비위원회</h3>
+                
+                <!-- 팀 리스트 -->
+                <div class="team-list">
+                    
+                    <!-- 1. 총괄 -->
+                    <div class="team-item">
+                        <div class="team-label">총괄</div>
+                        <div class="team-members">이익현 ㅣ 김동현</div>
+                    </div>
+
+                    <!-- 2. 웹사이트 개발 -->
+                    <div class="team-item">
+                        <div class="team-label">웹사이트 개발</div>
+                        <div class="team-members">최승원 ㅣ 이재원</div>
+                    </div>
+
+                    <!-- 3. 디자인 -->
+                    <div class="team-item">
+                        <div class="team-label">디자인</div>
+                        <div class="team-members">양정은 ㅣ 정윤지</div>
+                    </div>
+
+                    <!-- 4. 예산팀 -->
+                    <div class="team-item">
+                        <div class="team-label">예산팀</div>
+                        <div class="team-members">장지우 ㅣ 김희찬 ㅣ 정종혁 ㅣ 문여진</div>
+                    </div>
+
+                    <!-- 5. 기획팀 -->
+                    <div class="team-item">
+                        <div class="team-label">기획팀</div>
+                        <div class="team-members">배민호 ㅣ 이동하 ㅣ 김예원 ㅣ 이채린</div>
+                    </div>
+
+                    <!-- 6. 운영팀 -->
+                    <div class="team-item">
+                        <div class="team-label">운영팀</div>
+                        <div class="team-members">천세진 ㅣ 김민준 ㅣ 홍수현</div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </section>
 
 
     <!-- 🚩 5. History (지난 학술제) -->
     <section id="history">
-        <div class="reveal" style="text-align: center;">
+        <div class="reveal" style="text-align: center; width: 100%;">
             <h2 class="about-title">History</h2>
-            <p class="about-text">Previous Exhibitions</p>
+            <p class="about-text" style="margin-bottom: 60px;">
+                Previous Exhibitions<br>
+                <span style="font-size: 0.8rem; color: #666;">(포스터를 클릭하면 당시 웹사이트로 이동합니다)</span>
+            </p>
             
-            <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 30px;">
-                <div style="width: 120px; height: 160px; background: #222; color:#555; display:flex; align-items:center; justify-content:center; border-radius: 5px;">2024</div>
-                <div style="width: 120px; height: 160px; background: #222; color:#555; display:flex; align-items:center; justify-content:center; border-radius: 5px;">2023</div>
-                <div style="width: 120px; height: 160px; background: #222; color:#555; display:flex; align-items:center; justify-content:center; border-radius: 5px;">2022</div>
+            <div class="history-container">
+                
+                <!-- [1] 2024년 (포스터 1개인 경우: 기존 방식 유지 or 박스로 감싸도 됨) -->
+                <div class="history-item">
+                    <div class="history-text">
+                        <h3 class="history-year">2024 건축공학부 학술전시회</h3>
+                        <h2 class="history-theme">Transition</h2>
+                    </div>
+                    <!-- 1개일 땐 그냥 둬도 되고, .poster-row로 감싸도 상관없음 -->
+                    <div class="poster-row">
+                        <a href="https://hyuare2024.com" target="_blank" class="poster-link">
+                            <img src="img/2024Poster.webp" alt="2024 Poster" class="history-poster">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- [2] 2023년 (포스터 2개인 경우: 예시) -->
+                <div class="history-item">
+                    <div class="history-text">
+                        <h3 class="history-year">2023 건축공학부 학술전시회</h3>
+                        <h2 class="history-theme">Turning a Moment <br> into a Movement</h2>
+                    </div>
+                    
+                    <!-- [핵심] 포스터들을 가로로 나열하는 박스 -->
+                    <div class="poster-row">
+                        <!-- 첫 번째 포스터 -->
+                        <a href="http://www.hyuare.com" target="_blank" class="poster-link">
+                            <img src="img/2023Poster1.webp" alt="2023 Poster Ver.1" class="history-poster">
+                        </a>
+                        <!-- 두 번째 포스터 -->
+                        <a href="http://www.hyuare.com" target="_blank" class="poster-link">
+                            <img src="img/2023Poster2.webp" alt="2023 Poster Ver.2" class="history-poster">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- [3] 2022년 -->
+                <div class="history-item">
+                    <div class="history-text">
+                        <h3 class="history-year">2022 건축공학부 학술전시회</h3>
+                        <h2 class="history-theme">Admixture</h2>
+                    </div>
+                    <div class="poster-row">
+                        <a href="https://junsung0207.github.io/Archi-Graduation/index.html" target="_blank" class="poster-link">
+                            <img src="img/2022Poster.webp" alt="2022 Poster" class="history-poster">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- [4] 2021년 -->
+                <div class="history-item">
+                    <div class="history-text">
+                        <h3 class="history-year">2021 건축공학부 학술전시회</h3>
+                        <h2 class="history-theme">Ductile & Brittle</h2>
+                    </div>
+                    
+                    <!-- 포스터 2개를 가로로 배치 -->
+                    <div class="poster-row">
+                        <!-- 첫 번째 포스터 (클릭 안 됨) -->
+                        <div class="poster-link" style="cursor: default; pointer-events: none;">
+                            <img src="img/2021Poster1.webp" alt="2021 Poster Ver.1" class="history-poster">
+                        </div>
+                        <!-- 두 번째 포스터 (클릭 안 됨) -->
+                        <div class="poster-link" style="cursor: default; pointer-events: none;">
+                            <img src="img/2021Poster2.webp" alt="2021 Poster Ver.2" class="history-poster">
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
 
-    <!-- Footer -->
+    <!-- Footer - [복구됨] -->
     <section style="min-height: 20vh; background-color: #000; padding: 3rem 0; border-top: 1px solid #222;">
         <div class="reveal" style="text-align: center;">
-            <!-- 하단 로고 -->
             <img src="img/logo.png" alt="logo" style="height: 30px; opacity: 0.5; margin-bottom: 15px;">
             <p style="color: #555; font-size: 0.8rem;">
                 Hanyang Univ. Architectural Engineering<br>
@@ -133,6 +266,28 @@
             </p>
         </div>
     </section>
+
+
+    <!-- [필수] 팝업창(모달) 구조 -->
+    <div id="project-modal" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            
+            <!-- 이름 -->
+            <h3 id="modal-name" style="color: #888; margin-top: 0; font-weight: 400;">이름</h3>
+            
+            <!-- 구분선 -->
+            <hr style="width: 30px; border: 1px solid #fff; margin: 15px auto;">
+            
+            <!-- 제목 -->
+            <h2 id="modal-title" style="margin-bottom: 20px;">작품 제목</h2>
+            
+            <!-- 설명 (JS에서 내용 채움) -->
+            <p id="modal-desc" style="color: #aaa; font-size: 0.95rem; line-height: 1.6; white-space: pre-line;">
+                추가 설명이 여기에 표시됩니다.
+            </p>
+        </div>
+    </div>
 
     <!-- JS 연결 -->
     <script src="js/main.js"></script>
