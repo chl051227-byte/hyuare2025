@@ -30,7 +30,7 @@ body, html {
 ::-webkit-scrollbar-thumb {
     background-color: #ffffff25;
     border-radius: 10px;
-    border: 2px solid #050505;
+    /* border: 2px solid #050505; */
 }
 ::-webkit-scrollbar-thumb:hover { background-color: #555; }
 
@@ -89,7 +89,7 @@ section {
     padding: 4rem 2rem;
     box-sizing: border-box;
     position: relative;
-    border-bottom: 1px solid #111;
+    /* border-bottom: 1px solid #111; */    
     text-align: center;
     z-index: 10; /* hero 보다 위에 */
     
@@ -446,7 +446,8 @@ section {
     width: 85%;
     max-width: 500px;
     text-align: center;
-    border: 1px solid #333;
+    /* border: 1px solid #333; */
+    border:none;    
     border-top: 4px solid #9994c77a;
     position: relative;
     box-shadow: 0 20px 50px rgba(0,0,0,0.8);

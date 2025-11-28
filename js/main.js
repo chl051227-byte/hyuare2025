@@ -266,6 +266,12 @@ const startFrame = 1; // PM1부터 시작
 const animationStartScroll = 0;      // 페이지 맨 위부터 시작 (0 ~ 1)
 const animationScrollRange = 0.2;    // 전체 스크롤의 30% 구간 동안 애니메이션 (0 ~ 1) 
 
+// [NEW] 배경 이미지 크기 설정
+// 'cover' = 화면을 꽉 채움 (잘릴 수 있음, 비율 유지)
+// 'contain' = 이미지 전체가 보임 (여백 생길 수 있음, 비율 유지)
+// 'fill' = 화면에 맞춤 (찌그러질 수 있음, 비율 무시)
+const imageFitMode = 'fill'; 
+
 // 2. 이미지 미리 로딩 (버벅임 방지)
 const images = [];
 const imageSequence = { frame: 0 };
@@ -276,12 +282,32 @@ const render = () => {
     
     const img = images[imageSequence.frame];
     
-    // 화면 꽉 차게 그리기 (Cover 효과 연산)
-    const hRatio = canvas.width / img.width;
-    const vRatio = canvas.height / img.height;
-    const ratio = Math.max(hRatio, vRatio);
-    const centerShift_x = (canvas.width - img.width * ratio) / 2;
-    const centerShift_y = (canvas.height - img.height * ratio) / 2;
+    // imageFitMode에 따라 이미지 그리기 방식 결정
+    let ratio, centerShift_x, centerShift_y;
+    
+    if (imageFitMode === 'cover') {
+        // 화면 꽉 채우기 (잘릴 수 있음)
+        const hRatio = canvas.width / img.width;
+        const vRatio = canvas.height / img.height;
+        ratio = Math.max(hRatio, vRatio);
+        centerShift_x = (canvas.width - img.width * ratio) / 2;
+        centerShift_y = (canvas.height - img.height * ratio) / 2;
+    } else if (imageFitMode === 'contain') {
+        // 이미지 전체 보이기 (여백 생길 수 있음)
+        const hRatio = canvas.width / img.width;
+        const vRatio = canvas.height / img.height;
+        ratio = Math.min(hRatio, vRatio);
+        centerShift_x = (canvas.width - img.width * ratio) / 2;
+        centerShift_y = (canvas.height - img.height * ratio) / 2;
+    } else { // 'fill'
+        // 화면에 맞춰 늘리기 (비율 무시)
+        ratio = 1;
+        centerShift_x = 0;
+        centerShift_y = 0;
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
+        return;
+    }
     
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(img, 0, 0, img.width, img.height, centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
