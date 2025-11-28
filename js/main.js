@@ -253,8 +253,8 @@ const context = canvas ? canvas.getContext('2d') : null;
 const heroSection = document.getElementById('hero-section');
 
 // 1. 설정값 (사용자 요청에 맞춤)
-// PM0.webp ~ PM36.webp -> 총 36장
-const frameCount = 36; 
+// PM0.webp ~ PM45.webp -> 총 49장
+const frameCount = 42; 
 const imgFolder = './img/posterMotion/'; 
 const imgPrefix = 'PM'; 
 const imgExtension = 'webp'; 
