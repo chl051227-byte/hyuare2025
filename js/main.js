@@ -260,6 +260,12 @@ const imgPrefix = 'PM';
 const imgExtension = 'webp';
 const startFrame = 1; // PM1부터 시작 
 
+// [NEW] 애니메이션 타이밍 설정
+// animationStartScroll: 애니메이션이 시작되는 스크롤 위치 (0 = 맨 위, 1 = 맨 아래)
+// animationScrollRange: 애니메이션이 진행되는 스크롤 범위 (0.3 = 전체의 30% 구간)
+const animationStartScroll = 0;      // 페이지 맨 위부터 시작 (0 ~ 1)
+const animationScrollRange = 0.2;    // 전체 스크롤의 30% 구간 동안 애니메이션 (0 ~ 1) 
+
 // 2. 이미지 미리 로딩 (버벅임 방지)
 const images = [];
 const imageSequence = { frame: 0 };
@@ -311,21 +317,28 @@ resizeCanvas();
 
 // 4. 스크롤 이벤트 (애니메이션 제어)
 window.addEventListener('scroll', () => {
-    if (!heroSection) return;
-
     const scrollTop = window.scrollY;
-    // 히어로 섹션이 시작되는 위치
-    const heroTop = heroSection.offsetTop;
-    // 히어로 섹션의 전체 높이 (500vh)
-    const heroHeight = heroSection.offsetHeight;
-    // 뷰포트 높이
     const windowHeight = window.innerHeight;
-
-    // [핵심] 스크롤 비율 계산 (0 ~ 1)
-    // 섹션이 화면에 고정된 동안(Sticky 구간) 스크롤된 비율을 구합니다.
-    let scrollFraction = (scrollTop - heroTop) / (heroHeight - windowHeight);
+    const documentHeight = document.documentElement.scrollHeight;
     
-    // 범위를 0~1 사이로 제한
+    // 전체 페이지의 스크롤 가능 범위
+    const maxScroll = documentHeight - windowHeight;
+    
+    // 전체 스크롤 비율 (0 ~ 1)
+    const totalScrollFraction = scrollTop / maxScroll;
+    
+    // 애니메이션 시작 위치와 종료 위치 계산
+    const animationStart = animationStartScroll;
+    const animationEnd = animationStartScroll + animationScrollRange;
+    
+    // 애니메이션 구간 내에서의 진행도 계산 (0 ~ 1)
+    let scrollFraction = 0;
+    if (totalScrollFraction >= animationStart && totalScrollFraction <= animationEnd) {
+        scrollFraction = (totalScrollFraction - animationStart) / animationScrollRange;
+    } else if (totalScrollFraction > animationEnd) {
+        scrollFraction = 1; // 애니메이션 끝
+    }
+    
     scrollFraction = Math.max(0, Math.min(1, scrollFraction));
 
     // 현재 보여줄 프레임 번호 계산
