@@ -241,3 +241,104 @@ const scrollSpy = new IntersectionObserver((entries) => {
 sections.forEach(section => {
     scrollSpy.observe(section);
 });
+
+
+
+/* ==========================================================
+   [NEW] 히어로 섹션 스크롤 시퀀스 애니메이션 (최종)
+   ========================================================== */
+
+const canvas = document.getElementById('hero-canvas');
+const context = canvas ? canvas.getContext('2d') : null;
+const heroSection = document.getElementById('hero-section');
+
+// 1. 설정값 (사용자 요청에 맞춤)
+// PM0.webp ~ PM36.webp -> 총 36장
+const frameCount = 36; 
+const imgFolder = './img/posterMotion/'; 
+const imgPrefix = 'PM'; 
+const imgExtension = 'webp'; 
+
+// 2. 이미지 미리 로딩 (버벅임 방지)
+const images = [];
+const imageSequence = { frame: 0 };
+
+// 캔버스 그리기 함수
+const render = () => {
+    if (!context || !images[imageSequence.frame]) return;
+    
+    const img = images[imageSequence.frame];
+    
+    // 화면 꽉 차게 그리기 (Cover 효과 연산)
+    const hRatio = canvas.width / img.width;
+    const vRatio = canvas.height / img.height;
+    const ratio = Math.max(hRatio, vRatio);
+    const centerShift_x = (canvas.width - img.width * ratio) / 2;
+    const centerShift_y = (canvas.height - img.height * ratio) / 2;
+    
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(img, 0, 0, img.width, img.height, centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
+};
+
+// 이미지 로드 함수
+const preloadImages = () => {
+    if (!canvas) return;
+    
+    for (let i = 0; i < frameCount; i++) {
+        const img = new Image();
+        // 파일명: PM0.webp, PM1.webp ... 
+        img.src = `${imgFolder}${imgPrefix}${i}.${imgExtension}`;
+        images.push(img);
+        
+        // 첫 장 로드되면 바로 그리기
+        if (i === 0) {
+            img.onload = render;
+        }
+    }
+};
+
+// 3. 캔버스 리사이징 대응
+const resizeCanvas = () => {
+    if (!canvas) return;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    render();
+};
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas(); 
+
+
+// 4. 스크롤 이벤트 (애니메이션 제어)
+window.addEventListener('scroll', () => {
+    if (!heroSection) return;
+
+    const scrollTop = window.scrollY;
+    // 히어로 섹션이 시작되는 위치
+    const heroTop = heroSection.offsetTop;
+    // 히어로 섹션의 전체 높이 (500vh)
+    const heroHeight = heroSection.offsetHeight;
+    // 뷰포트 높이
+    const windowHeight = window.innerHeight;
+
+    // [핵심] 스크롤 비율 계산 (0 ~ 1)
+    // 섹션이 화면에 고정된 동안(Sticky 구간) 스크롤된 비율을 구합니다.
+    let scrollFraction = (scrollTop - heroTop) / (heroHeight - windowHeight);
+    
+    // 범위를 0~1 사이로 제한
+    scrollFraction = Math.max(0, Math.min(1, scrollFraction));
+
+    // 현재 보여줄 프레임 번호 계산
+    const frameIndex = Math.min(
+        frameCount - 1,
+        Math.floor(scrollFraction * frameCount)
+    );
+
+    // 프레임이 바뀔 때만 다시 그리기 (성능 최적화)
+    if (imageSequence.frame !== frameIndex) {
+        imageSequence.frame = frameIndex;
+        requestAnimationFrame(render);
+    }
+});
+
+// [실행] 이미지 로딩 시작
+preloadImages();

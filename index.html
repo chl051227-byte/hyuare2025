@@ -28,11 +28,24 @@
     </nav>
 
 
-    <!-- 🏠 메인 히어로 섹션 -->
-    <section class="hero reveal">
-        <h1>HYU ARCHITECTURAL<br>ENGINEERING 2025</h1>
-        <p>한양대학교 건축공학과 학술제</p>
-        <p class="scroll-down" onclick="location.href='#yield'">SCROLL DOWN ↓</p>
+    <!-- 🏠 메인 히어로 섹션 (스크롤 애니메이션 적용) -->
+    <section class="hero reveal" id="hero-section">
+        
+        <!-- [NEW] 화면에 고정될 틀 (Sticky Wrapper) -->
+        <div class="hero-sticky-wrapper">
+            
+            <!-- 배경 애니메이션 캔버스 -->
+            <canvas id="hero-canvas"></canvas>
+            
+            <!-- 텍스트 콘텐츠 (캔버스 위에 뜸) -->
+            <div class="hero-content">
+                <h1>HYU ARCHITECTURAL<br>ENGINEERING 2025</h1>
+                <p>한양대학교 건축공학부 학술제</p>
+                <!-- 클릭 시 애니메이션 끝나는 지점(Yield)으로 이동 -->
+                <p class="scroll-down" onclick="document.getElementById('yield').scrollIntoView({behavior: 'smooth'})">SCROLL DOWN ↓</p>
+            </div>
+            
+        </div>
     </section>
 
 

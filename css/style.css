@@ -10,19 +10,13 @@ body, html {
     padding: 0;
     font-family: 'Pretendard', sans-serif;
     
-    /* [수정] 배경 이미지 설정 */
-    /* 1. 배경색은 혹시 이미지가 안 뜰 때를 대비해 남겨둡니다 */
-    background-color: #050505; 
-    
-    /* 2. 배경 이미지 연결 (img 폴더 안의 파일명으로 바꾸세요) */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/background.webp');
-    /* linear-gradient: 이미지 위에 검은색 막을 70% 농도로 씌워서 글자가 잘 보이게 함 */
-    
-    /* 3. 배경 위치 및 고정 설정 */
-    background-size: cover;       /* 화면을 꽉 채우도록 */
-    background-position: center;  /* 이미지가 중앙에 오도록 */
-    background-attachment: fixed; /* [핵심] 스크롤 해도 배경은 고정됨 */
-    background-repeat: no-repeat; /* 이미지 반복 안 함 */
+    /* 배경 이미지 설정 */
+    background-color: #050505;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../img/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     
     color: #f1f1f1;
     overflow-x: hidden;
@@ -104,10 +98,42 @@ section {
 
 /* 4. 메인 히어로 섹션 */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('../img/2025Poster.webp'); 
-    background-size: cover;
-    background-position: center;
-    min-height: calc(100vh - 70px);
+    position: relative;
+    width: 100%;
+    /* [핵심] 스크롤 길이 확보: 화면 높이의 5배만큼 스크롤해야 지나감 */
+    height: 200vh; 
+    background-color: #0c040f;
+}
+
+/* [NEW] 고정된 화면 틀 (Sticky Wrapper) */
+.hero-sticky-wrapper {
+    position: sticky; /* 스크롤 내려도 화면에 붙어있음 */
+    top: 0;
+    width: 100%;
+    height: 100vh; /* 화면 가득 채움 */
+    overflow: hidden;
+}
+
+/* 캔버스 (배경) */
+#hero-canvas {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 찌그러지지 않고 꽉 차게 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* 텍스트 콘텐츠 */
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* 캔버스 위에 뜸 */
+    text-align: center;
+    width: 100%;
 }
 
 .hero h1 {
@@ -119,6 +145,9 @@ section {
     background: linear-gradient(to right, #ffffff, #999999);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    
+    /* 텍스트에도 그림자를 줘서 배경과 분리 */
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
 }
 
 .hero p {
@@ -126,6 +155,7 @@ section {
     color: #ccc;
     font-weight: 300;
     letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(0,0,0,0.8);
 }
 
 .scroll-down {
@@ -134,9 +164,22 @@ section {
     cursor: pointer; 
     opacity: 0.7;
     transition: opacity 0.3s;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0,0,0,0.8);
 }
 .scroll-down:hover { opacity: 1; }
 
+
+@media screen and (max-width: 768px) {
+    /* [NEW] 모바일 히어로(모션 이미지) 비율 강제 조정 */
+    #hero-canvas {
+        /* cover: 비율 유지 (잘림) -> 기존 방식 */
+        /* fill: 화면에 억지로 끼워 맞춤 (잘림 없음, 비율 변형됨) */
+        object-fit: fill !important; 
+        
+        /* 팁: 만약 비율 변형(찌그러짐)이 싫고 여백이 생겨도 다 보고 싶다면 'contain'을 쓰세요 */
+    }
+}
 
 /* 5. 콘텐츠 스타일 */
 .about-text {
@@ -184,6 +227,8 @@ section {
     opacity: 1;
     transform: translateY(0);
 }
+
+
 
 /* 📱
    [Part 1] 모바일 전용 글자 크기 조정 (Yield Point 등) */
