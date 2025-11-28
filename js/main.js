@@ -253,11 +253,12 @@ const context = canvas ? canvas.getContext('2d') : null;
 const heroSection = document.getElementById('hero-section');
 
 // 1. 설정값 (사용자 요청에 맞춤)
-// PM0.webp ~ PM45.webp -> 총 49장
-const frameCount = 42; 
+// PM1.webp ~ PM36.webp -> 총 36장
+const frameCount = 36; 
 const imgFolder = './img/posterMotion/'; 
 const imgPrefix = 'PM'; 
-const imgExtension = 'webp'; 
+const imgExtension = 'webp';
+const startFrame = 1; // PM1부터 시작 
 
 // 2. 이미지 미리 로딩 (버벅임 방지)
 const images = [];
@@ -286,8 +287,8 @@ const preloadImages = () => {
     
     for (let i = 0; i < frameCount; i++) {
         const img = new Image();
-        // 파일명: PM0.webp, PM1.webp ... 
-        img.src = `${imgFolder}${imgPrefix}${i}.${imgExtension}`;
+        // 파일명: PM1.webp, PM2.webp ... PM36.webp
+        img.src = `${imgFolder}${imgPrefix}${i + startFrame}.${imgExtension}`;
         images.push(img);
         
         // 첫 장 로드되면 바로 그리기
