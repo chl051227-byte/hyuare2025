@@ -311,22 +311,19 @@ resizeCanvas();
 
 // 4. 스크롤 이벤트 (애니메이션 제어)
 window.addEventListener('scroll', () => {
-    if (!heroSection) return;
-
     const scrollTop = window.scrollY;
-    // 히어로 섹션이 시작되는 위치
-    const heroTop = heroSection.offsetTop;
-    // 히어로 섹션의 전체 높이 (500vh)
-    const heroHeight = heroSection.offsetHeight;
-    // 뷰포트 높이
     const windowHeight = window.innerHeight;
-
-    // [핵심] 스크롤 비율 계산 (0 ~ 1)
-    // 섹션이 화면에 고정된 동안(Sticky 구간) 스크롤된 비율을 구합니다.
-    let scrollFraction = (scrollTop - heroTop) / (heroHeight - windowHeight);
+    const documentHeight = document.documentElement.scrollHeight;
     
-    // 범위를 0~1 사이로 제한
-    scrollFraction = Math.max(0, Math.min(1, scrollFraction));
+    // 전체 페이지의 스크롤 가능 범위
+    const maxScroll = documentHeight - windowHeight;
+    
+    // 애니메이션을 보여줄 스크롤 범위 설정 (상위 30%의 스크롤 구간에서 애니메이션 실행)
+    const animationRange = maxScroll * 0.3; // 상위 30% 구간
+    
+    // 스크롤 비율 계산 (0 ~ 1)
+    let scrollFraction = Math.min(scrollTop / animationRange, 1);
+    scrollFraction = Math.max(0, scrollFraction);
 
     // 현재 보여줄 프레임 번호 계산
     const frameIndex = Math.min(
