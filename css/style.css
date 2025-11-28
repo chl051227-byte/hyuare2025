@@ -21,7 +21,7 @@ body, html {
     color: #f1f1f1;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    padding-top: 70px;
+    /* padding-top: 70px; */
 }
 
 /* [NEW] ✨ 커스텀 스크롤바 디자인 */
@@ -56,9 +56,7 @@ body, html {
     height: 40px;
     width: auto;
     margin-top: 5px;
-    transition: opacity 0.3s;
 }
-.nav-logo-img:hover { opacity: 0.8; }
 
 .nav-menu a {
     text-decoration: none !important;
@@ -66,7 +64,6 @@ body, html {
     font-weight: 600;
     font-size: 1rem;
     margin-left: 50px;
-    transition: color 0.3s;
 }
 .nav-menu a:visited { color: #aaa; }
 
@@ -96,18 +93,31 @@ section {
     text-align: center;
 }
 
-/* 4. 메인 히어로 섹션 */
-.hero {
+.trans-box{
+    width:100%;
+    height:100vh;ㅂ
+}
+
+#yield {
     position: relative;
     width: 100%;
+    background-color: #0c040f;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* 4. 메인 히어로 섹션 */
+.hero {
+    position: fixed;
+    width: 100%;
     /* [핵심] 스크롤 길이 확보: 화면 높이의 5배만큼 스크롤해야 지나감 */
-    height: 200vh; 
+    /* height: 200vh;  */
     background-color: #0c040f;
 }
 
 /* [NEW] 고정된 화면 틀 (Sticky Wrapper) */
 .hero-sticky-wrapper {
-    position: sticky; /* 스크롤 내려도 화면에 붙어있음 */
+    position: fixed; /* 스크롤 내려도 화면에 붙어있음 */
     top: 0;
     width: 100%;
     height: 100vh; /* 화면 가득 채움 */
@@ -162,12 +172,9 @@ section {
     font-size: 1rem; 
     margin-top: 40px; 
     cursor: pointer; 
-    opacity: 0.7;
-    transition: opacity 0.3s;
     color: #fff;
     text-shadow: 0 0 10px rgba(0,0,0,0.8);
 }
-.scroll-down:hover { opacity: 1; }
 
 
 @media screen and (max-width: 768px) {
@@ -216,16 +223,12 @@ section {
 
 /* 6. 스크롤 애니메이션 */
 .reveal {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s ease-out;
     display: flex;
     flex-direction: column;
     align-items: center; 
 }
 .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+    /* 애니메이션 제거됨 */
 }
 
 
@@ -356,15 +359,9 @@ section {
     border: none; 
     padding: 12px 0;
     cursor: pointer;
-    transition: all 0.3s;
     text-align: center;
     position: relative;
     box-sizing: border-box;
-}
-
-.student-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 7px;
 }
 
 /* 중앙 복도 (PC) */
@@ -802,29 +799,15 @@ section {
 .poster-link {
     display: inline-block;
     border-radius: 5px;
-    overflow: hidden; /* 이미지가 커질 때 밖으로 안 나가게 */
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6); /* 깊은 그림자 */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
 }
 
 /* 포스터 이미지 */
 .history-poster {
     display: block;
-    width: 350px; /* 포스터 크기 */
+    width: 350px;
     height: auto;
-    transition: transform 0.5s ease; /* 부드러운 확대 효과 */
-    opacity: 0.9; /* 평소엔 살짝 어둡게 */
-}
-
-/* [호버 효과] 마우스 올렸을 때 */
-.poster-link:hover {
-    transform: translateY(-10px); /* 위로 살짝 뜸 */
-    box-shadow: 0 30px 70px rgba(0,0,0,0.8); /* 그림자 진해짐 */
-}
-
-.poster-link:hover .history-poster {
-    transform: scale(1.05); /* 이미지 살짝 확대 */
-    opacity: 1; /* 밝아짐 */
 }
 
 /* 포스터 가로 배치 컨테이너 */
@@ -841,8 +824,7 @@ section {
     display: inline-block;
     border-radius: 5px;
     overflow: hidden; 
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6); 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
     
     /* [수정] 포스터가 2개일 때 너무 크면 꽉 차버리므로, 최대 너비 제한 */
     max-width: 100%; 
