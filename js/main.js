@@ -19,28 +19,28 @@ revealElements.forEach((el) => observer.observe(el));
 
 // 1. 학생 데이터 (여기서 'desc' 부분을 수정하세요!)
 const students = [
-     /* --- [임시 주석 처리] 1열 & 2열 (학술경진대회 출품작) ---
-    // 1열
+      
+   /* // 1열
     { name: "김한양", title: "도심 항공 모빌리티(UAM) 버티포트", desc: "UAM 상용화에 대비한 도심형 수직 이착륙장(Vertiport)의 효율적인 동선 체계와 구조적 안전성을 분석한 연구입니다." },
     { name: "이건축", title: "친환경 목구조 하이라이즈 빌딩", desc: "탄소 배출 저감을 위한 고층 목조 건축의 접합부 상세 개발 및 내화 성능 검증에 관한 프로젝트입니다." },
     { name: "박공학", title: "AI 기반 건축 구조 안전 진단", desc: "딥러닝 알고리즘을 활용하여 콘크리트 균열 이미지를 분석하고, 건물의 안전 등급을 자동으로 산정하는 시스템입니다." },
     { name: "최구조", title: "초고층 빌딩 풍진동 제어", desc: "설명글을 여기에 적어주세요." },
     { name: "정시공", title: "스마트 건설 현장 안전 솔루션", desc: "설명글을 여기에 적어주세요." },
     { name: "강환경", title: "제로 에너지 빌딩 이중 외피", desc: "설명글을 여기에 적어주세요." },
-        //
+        //*/
     // 2열
-    { name: "조설계", title: "메타버스 가상 건축 공간", desc: "설명글을 여기에 적어주세요." },
-    { name: "윤도시", title: "포스트 코로나 주거 공간 변화", desc: "설명글을 여기에 적어주세요." },
-    { name: "장재료", title: "3D 프린팅 콘크리트 배합", desc: "설명글을 여기에 적어주세요." },
-    { name: "한설비", title: "데이터센터 냉각 효율 최적화", desc: "설명글을 여기에 적어주세요." },
-    { name: "오역사", title: "한국 전통 건축의 현대적 재해석", desc: "설명글을 여기에 적어주세요." },
-    { name: "송재생", title: "폐공장 리모델링 도시 재생", desc: "설명글을 여기에 적어주세요." },
-*/
+    { name: "-", title: "", desc: "-" },
+    { name: "국악쿠스틱스", title: "공간 음향 특성 개선을 위한 시각화 기반 음향 해석과 SDI 제안", desc: "학술경진대회 출품작" },
+    { name: "eggneering", title: "시멘트 대체재로서의 석회석 미분말(LSP)과 달걀 껍질 미분말(ESP) 물리학적 특성 비교 평가", desc: "학술경진대회 출품작" },
+    { name: "주의: Lazy-mode 작동중", title: "자연어 기반 구조설계 자동화 엔진 개발 -1방향 슬래브 설계 모듈 프로토타입 구현-", desc: "학술경진대회 출품작" },
+    { name: "JYKS", title: "공동주택의 생산성 혁신 전략: 일반, 모듈러, 마이크로 팩토리 공법의 시공 효율성 비교 분석", desc: "학술경진대회 출품작" },
+    { name: "수현동", title: "3D 스캔 기반 모델을 활용한 균열 인식 자동화 가능성 기초 연구", desc: "학술경진대회 출품작" },
+
 
     // 3열
     { name: "전선일", title: "고에너지 X선을 활용한 GO-LDH 복합체 혼입 해수 알칼리 활성화 재료의 반응 생성물 분석", desc: "Prof. 배성철" },
     { name: "이종혁", title: "서울시 권역별 주택가격 결정요인 분석:PF·금융규제·심리 변수를 반영한 실증 연구", desc: "Prof. 한상환" },
-    { name: "이상휘", title: "", desc: "Prof. 한상환" },
+    { name: "-", title: "", desc: "-" },
     { name: "안문호", title: "응답스펙트럼 해석을 위한 소프트웨어 개발", desc: "Prof. 한상환" },
     { name: "성무규", title: "WUF-W 접합부 설계 자동화 프로세스 개발", desc: "Prof. 한상환" },
     { name: "김한울", title: "RC 기둥의 파괴모드 분류 방법 제안", desc: "Prof. 한상환" },
@@ -55,7 +55,7 @@ const students = [
 
     // 5열
     { name: "이재훈", title: "경제성과 환경성을 고려한 2050년 대한민국 최적 전원믹스 시뮬레이션", desc: "Prof. 정재원" },
-    { name: "송현우", title: "", desc: "Prof. 정재원" },
+    { name: "-", title: "", desc: "-" },
     { name: "박호일", title: "재실자수에 따른 디멘드 컨트롤 에너지 절감 효과분석", desc: "Prof. 정재원" },
     { name: "박병준", title: "일사량 측정을 통한 공동주택 최적 배치 분석", desc: "Prof. 정재원" },
     { name: "나병윤", title: "단층 건물 형상과 부하: 부피 고정 다기후 분석", desc: "Prof. 정재원" },
@@ -63,7 +63,7 @@ const students = [
 
     // 6열
     { name: "황동욱", title: "건설현장 CCTV 영상을 활용한 딥러닝 기반 실시간 안전모 착용 탐지 연구", desc: "Prof. 유은종" },
-    { name: "정지환", title: "", desc: "Prof. 유은종" },
+    { name: "-", title: "", desc: "-" },
     { name: "정민관", title: "균열단면을 고려한 프리스트레스트 중공 슬래브(HCS) 구조해석", desc: "Prof. 유은종" },
     { name: "이지수", title: "횡력저항시스템(SRFS) 기반 구조 부재의 역할 분류를 통한 KDS 내진 상세 규정 검토 자동화 모듈", desc: "Prof. 유은종" },
     { name: "이동건", title: "지진 발생 시 건축물의 기능손실기간을 고려한 취약도 함수 기반 손실금액 산정", desc: "Prof. 유은종" },
@@ -103,37 +103,33 @@ const students = [
 ];
 
 
-// 2. 배치도 자동 생성 함수
+/// 2. 배치도 자동 생성 함수 (업데이트: 빈 공간('-') 예외 처리 추가)
 const gridContainer = document.getElementById('layout-grid');
 
 function createLayout() {
+    if (!gridContainer) return;
     gridContainer.innerHTML = '';
 
-    // [NEW] 1~2열 대체: "학술경진대회 출품작" 가로선 생성
+    /*// [가로선] 학술경진대회 출품작 (1~2열 대체용)
     const placeholder = document.createElement('div');
-    
-    // 스타일 설정 (100% 너비, 중앙 정렬, 가로선 디자인)
     placeholder.style.width = '100%';
     placeholder.style.display = 'flex';
     placeholder.style.alignItems = 'center';
     placeholder.style.justifyContent = 'center';
     placeholder.style.gap = '20px';
-    placeholder.style.padding = '20px 0 60px 0'; // 아래쪽 여백을 줘서 본문과 띄움
+    placeholder.style.padding = '20px 0 60px 0'; 
     
-    // 내용 삽입 (선 - 글자 - 선)
     placeholder.innerHTML = `
         <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.5);"></div>
-        <span style="color: #fff; font-size: 0.9rem; font-weight: 500; letter-spacing: 1px; white-space: nowrap;">
+        <span style="color: #fff; font-size: 1.1rem; font-weight: 500; letter-spacing: 1px; white-space: nowrap;">
             학술경진대회 출품작
         </span>
         <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.5);"></div>
     `;
-    
-    // 그리드 맨 위에 추가
-    gridContainer.appendChild(placeholder);
+    gridContainer.appendChild(placeholder);*/
 
 
-    // [나머지 학생들 배치] (기존 로직)
+    // [학생 명단 배치]
     students.forEach((student, index) => {
         const div = document.createElement('div');
         div.classList.add('student-item');
@@ -148,26 +144,48 @@ function createLayout() {
             div.classList.add('has-line');
         }
         
-        div.innerHTML = `
-            <span class="panel-label">PANEL</span>
-            <span class="student-name">${student.name}</span>
-        `;
-        
-        div.onclick = () => openModal(student.name, student.title, student.desc);
+        // [수정] 이름이 "-"인 경우 (빈 공간 처리)
+        if (student.name === "-") {
+            // PANEL 글자 제거, 이름만 표시
+            div.innerHTML = `
+                <span class="student-name" style="margin-top: 15px; opacity: 0.3;">${student.name}</span>
+            `;
+            // 클릭 방지 및 커서 변경
+            div.style.cursor = "default";
+            div.onclick = null; 
+        } else {
+            // 정상적인 경우 (기존 코드)
+            div.innerHTML = `
+                <span class="panel-label">PANEL</span>
+                <span class="student-name">${student.name}</span>
+            `;
+            // 클릭 시 팝업 열기
+            div.onclick = () => openModal(student.name, student.title, student.desc);
+        }
         
         gridContainer.appendChild(div);
 
-        // 줄 바꿈 및 그룹 나누기
-        const currentCount = index + 1;
-        if (currentCount % 6 === 0 && currentCount !== students.length) {
-            if (currentCount % 12 === 0) {
+        // 줄 바꿈 및 그룹 나누기 로직 (기존 유지)
+        const currentCount = index + 1; 
+        const isLastItem = currentCount === students.length;
+
+        if (currentCount % 6 === 0 && !isLastItem) {
+            if (currentCount === 6) {
                 const spacer = document.createElement('div');
                 spacer.classList.add('group-spacer');
                 gridContainer.appendChild(spacer);
-            } else {
-                const divider = document.createElement('div');
-                divider.classList.add('row-divider');
-                gridContainer.appendChild(divider);
+            }
+            else {
+                if ((currentCount - 6) % 12 === 0) {
+                    const spacer = document.createElement('div');
+                    spacer.classList.add('group-spacer');
+                    gridContainer.appendChild(spacer);
+                } 
+                else {
+                    const divider = document.createElement('div');
+                    divider.classList.add('row-divider');
+                    gridContainer.appendChild(divider);
+                }
             }
         }
     });
