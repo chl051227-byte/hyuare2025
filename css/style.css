@@ -605,36 +605,50 @@ section {
     
     .student-item {
         /* [중요] PC처럼 한 줄에 6개(3+3)가 들어가도록 너비 설정 */
-        /* 복도 공간을 고려하여 13~14% 정도로 맞춤 */
         width: 13.5%; 
         padding: 5px 0; /* 높이 납작하게 */
+        
+        /* [추가] 긴 이름이 박스를 뚫고 나가지 않게 정렬 */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     
-    /* [중요] 모바일에서도 중앙 복도 여백 유지 (단, 크기는 줄임) */
+    /* [중요] 모바일에서도 중앙 복도 여백 유지 */
     .student-item.aisle-right {
-        margin-right: 20px; /* PC(60px) -> 모바일(15px) */
+        margin-right: 15px; /* PC(80px) -> 모바일(15px) */
     }
     
     .group-spacer {
-        height: 30px; /* 그룹 여백 줄임 */
+        height: 20px; /* 그룹 여백 줄임 */
     }
 
     /* 폰트 크기를 아주 작게 줄여야 6명이 한 줄에 들어갑니다 */
     .panel-label {
-        font-size: 0.38rem; /* PANEL 글자 */
-        margin-bottom: 2px;
+        font-size: 0.35rem; /* PANEL 글자 (더 작게) */
+        margin-bottom: 1px;
+        opacity: 0.5;
     }
     
+    /* [핵심 수정] 긴 이름 대응을 위한 폰트 축소 */
     .student-name {
-        font-size: 0.7rem; /* 이름 글자 */
+        font-size: 0.55rem; /* 기존 0.7rem -> 0.55rem으로 축소 */
         font-weight: 400;
+        
+        /* 긴 이름이 두 줄로 될 때를 대비한 설정 */
+        line-height: 1.1; 
+        word-break: keep-all; /* 단어 중간에 끊기지 않게 */
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis; /* 너무 길면 ... 처리 (선택사항) */
     }
 
+    /* 수직선도 모바일에 맞게 조정 */
     .student-item.has-line::after {
-        height: 7px;
+        height: 8px;
         right: -1px;
     }
-
 }
 
 /* 📱 

@@ -55,16 +55,16 @@ const students = [
 
     // 5열
     { name: "이재훈", title: "경제성과 환경성을 고려한 2050년 대한민국 최적 전원믹스 시뮬레이션", desc: "Prof. 정재원" },
-    { name: "-", title: "", desc: "-" },
     { name: "박호일", title: "재실자수에 따른 디멘드 컨트롤 에너지 절감 효과분석", desc: "Prof. 정재원" },
+    { name: "-", title: "", desc: "-" },
     { name: "박병준", title: "일사량 측정을 통한 공동주택 최적 배치 분석", desc: "Prof. 정재원" },
     { name: "나병윤", title: "단층 건물 형상과 부하: 부피 고정 다기후 분석", desc: "Prof. 정재원" },
     { name: "김채원", title: "서울시립미술관 본관을 대상으로 한 OpenStudio 기반 신재생에너지 최적화 시뮬레이션 연구", desc: "Prof. 정재원" },
 
     // 6열
     { name: "황동욱", title: "건설현장 CCTV 영상을 활용한 딥러닝 기반 실시간 안전모 착용 탐지 연구", desc: "Prof. 유은종" },
-    { name: "-", title: "", desc: "-" },
     { name: "정민관", title: "균열단면을 고려한 프리스트레스트 중공 슬래브(HCS) 구조해석", desc: "Prof. 유은종" },
+    { name: "-", title: "", desc: "-" },
     { name: "이지수", title: "횡력저항시스템(SRFS) 기반 구조 부재의 역할 분류를 통한 KDS 내진 상세 규정 검토 자동화 모듈", desc: "Prof. 유은종" },
     { name: "이동건", title: "지진 발생 시 건축물의 기능손실기간을 고려한 취약도 함수 기반 손실금액 산정", desc: "Prof. 유은종" },
     { name: "이건우", title: "비균일 강성을 고려한 초고층 건물의 아웃리거 최적 배치에 관한 연구", desc: "Prof. 유은종" },
